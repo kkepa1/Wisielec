@@ -5,16 +5,25 @@ import wisielec.passwords.Password;
 import java.util.Scanner;
 
 public class Menu {
-    private static final Scanner scan = new Scanner(System.in);
     private int response;
+    /* Dlaczego jezeli daje private static final Scanner scan = new Scanner(System.in);
+     * to przy loop skanowanie jest "za wolne" i od razu daje nastepna iteracje
+     * ale jak damy scannera do metody to jest git?
+     */
 
     protected void start() {
         this.response = question();
 
-        checkAnswer(this.response);
+        if (this.response == 1) {
+            enterNewPassword();
+        }
+        if (this.response == 2) {
+
+        }
     }
 
     private int question() {
+        Scanner scan = new Scanner(System.in);
         int response = 0;
         boolean response_check = false;
 
@@ -38,25 +47,26 @@ public class Menu {
                 System.err.print("Wrong number! Enter 1 or 2: ");
             }
         }
-
         return response;
     }
 
-    private static void checkAnswer(int response) {
-        if (response == 1) {
-            //enterNewPassword();
-        }
-        if (response == 2) {
+    private static void enterNewPassword() {
+        Scanner scan = new Scanner(System.in);
+        String new_password;
+        boolean new_password_check = false;
 
+        while (!new_password_check) {
+            System.out.print("Enter new password (should contain only letters and spaces): ");
+
+            new_password = scan.nextLine();
+            new_password_check = new_password.matches("^[ A-Za-z]+$");
+
+            if (!new_password_check) {
+                System.out.println("Wrong input!\n");
+            }
         }
+
+        //Password password = new Password();
     }
-
-    /*private static void enterNewPassword() {
-        System.out.print("Enter new password: ");
-
-        String newPassword = scan.nextLine();
-
-        Password password = new Password();
-    }*/
 
 }
