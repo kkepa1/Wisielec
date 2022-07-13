@@ -73,11 +73,17 @@ public class Menu {
     }
 
     private static void playGame() {
-        Scanner scan = new Scanner(System.in);
         GetPassword password = new GetPassword();
+
+        do {
+            enterLetter(password);
+        } while(!password.signs.matches("^[ A-Za-z]+$"));
+    }
+
+    private static void enterLetter(GetPassword password) {
+        Scanner scan = new Scanner(System.in);
         System.out.println(password.signs);
         String letter = "test";
-
 
         System.out.print("Enter a letter: ");
         while (!Character.isLetter(letter.charAt(0)) || letter.length() != 1) {
@@ -90,10 +96,8 @@ public class Menu {
 
         if (password.checkLetter(letter.charAt(0))) {
             System.out.println("Correct!");
-            System.out.println(password.signs);
         } else if (!password.checkLetter(letter.charAt(0))) {
             System.out.println("Incorrect! Try again!");
-            System.out.println(password.signs);
         }
     }
 

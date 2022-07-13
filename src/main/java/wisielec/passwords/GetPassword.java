@@ -10,7 +10,6 @@ public class GetPassword {
     private String random_password;
     public String signs;
     private String[] passwords;
-    private char[] check_letters = {};
 
     public GetPassword() {
         this.passwords = getPasswords().split(System.lineSeparator());
@@ -54,12 +53,6 @@ public class GetPassword {
 
             if (Character.isWhitespace(this.random_password.charAt(i))) {
                 content.append(" ");
-            }
-
-            for (int j=0; j<this.check_letters.length; j++) {
-                if(this.check_letters[j] == this.random_password.charAt(i)) {
-
-                }
             }
         }
         return content.toString();
