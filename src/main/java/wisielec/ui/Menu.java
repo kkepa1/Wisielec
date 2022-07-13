@@ -73,8 +73,21 @@ public class Menu {
     }
 
     private static void playGame() {
+        Scanner scan = new Scanner(System.in);
         GetPassword password = new GetPassword();
-        System.out.print(password.signs);
+        System.out.println(password.signs);
+        String letter = "test";
+
+
+        System.out.print("Enter a letter: ");
+        while (!Character.isLetter(letter.charAt(0)) || letter.length() != 1) {
+            letter = scan.nextLine();
+
+            if (!Character.isLetter(letter.charAt(0)) || letter.length() != 1) {
+                System.out.print(letter + " is a wrong input! Enter a letter: ");
+            }
+        }
+        System.out.println(letter);
     }
 
 }

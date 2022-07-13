@@ -17,6 +17,26 @@ public class GetPassword {
         this.signs = getSigns();
     }
 
+    private String getPasswords() {
+        StringBuilder content = new StringBuilder();
+
+        try {
+            File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
+            FileReader freader = new FileReader(file);
+            BufferedReader breader = new BufferedReader(freader);
+            String line;
+
+            while ((line = breader.readLine()) != null) {
+                content.append(line);
+                content.append(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return content.toString();
+    }
+
     private String getRandom() {
         this.passwords = getPasswords().split(System.lineSeparator());
         int idx = new Random().nextInt(this.passwords.length);
@@ -37,23 +57,7 @@ public class GetPassword {
         return content.toString();
     }
 
-    private String getPasswords() {
-        StringBuilder content = new StringBuilder();
+    //public boolean checkLetter(String letter) {
 
-        try {
-            File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
-            FileReader freader = new FileReader(file);
-            BufferedReader breader = new BufferedReader(freader);
-            String line;
-
-            while ((line = breader.readLine()) != null) {
-                content.append(line);
-                content.append(System.lineSeparator());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return content.toString();
-    }
+    //}
 }
