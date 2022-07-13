@@ -1,20 +1,16 @@
 package wisielec.passwords;
 
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 
 public class NewPassword {
 
-    private String password;
     public NewPassword(String password) {
-        this.password = password;
         try {
-            save(this.password);
+            save(password);
+        } catch (FileNotFoundException e) {
+            System.err.println("File PasswordBase.txt doesn't exist!");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Something went wrong!");
         }
     }
 

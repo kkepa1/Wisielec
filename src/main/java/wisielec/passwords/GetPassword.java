@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class GetPassword {
-    private String random_password;
+    private final String random_password;
     public String signs;
     private String[] passwords;
 
@@ -45,7 +45,6 @@ public class GetPassword {
 
     private String getSigns() {
         StringBuilder content = new StringBuilder();
-        boolean con;
         for (int i=0; i<this.random_password.length(); i++) {
             if (Character.isLetter(this.random_password.charAt(i))) {
                 content.append("_");
@@ -70,5 +69,13 @@ public class GetPassword {
             this.signs = String.valueOf(temp);
         }
         return this.random_password.indexOf(letter) != -1;
+    }
+
+    public String revealPassword(int check) {
+        if (check == 9) {
+            return this.random_password;
+        } else {
+            return "?";
+        }
     }
 }

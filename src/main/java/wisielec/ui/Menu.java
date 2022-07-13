@@ -2,29 +2,30 @@ package wisielec.ui;
 
 import wisielec.gamelogic.EnterNewPassword;
 import wisielec.gamelogic.PlayGame;
-import wisielec.passwords.GetPassword;
-import wisielec.passwords.NewPassword;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-    private int response;
+
     /* Dlaczego jezeli daje private static final Scanner scan = new Scanner(System.in);
      * to przy loop skanowanie jest "za wolne" i od razu daje nastepna iteracje
      * ale jak damy scannera do metody to jest git?
      */
 
+    // metoda wybierania dalszej ścieżki programu na podstawie odpowiedzi (wybranej opcji)
     public void start() {
-        this.response = question();
+        int response = question();
 
-        while (this.response == 1) {
-            EnterNewPassword.enterNewPassword();
-            this.response = question();
+        while (response == 1) {
+            EnterNewPassword enter_new_password = new EnterNewPassword();
+            enter_new_password.enterNewPassword();
+            response = question();
         }
 
-        if (this.response == 2) {
-            PlayGame.playGame();
+        if (response == 2) {
+            PlayGame play_game = new PlayGame();
+            play_game.playGame();
         }
     }
     // metoda generujaca pytanie i zwracajaca odpowiedz

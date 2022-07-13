@@ -1,12 +1,15 @@
 package wisielec.gamelogic;
 
 import wisielec.passwords.GetPassword;
+import wisielec.ui.Paint;
 
 import java.util.Scanner;
 
 public class PlayGame {
 
-    public static void playGame() {
+    private static int numberOfIncorrectGuesses = 0;
+
+    public void playGame() {
         GetPassword password = new GetPassword();
 
         do {
@@ -14,7 +17,7 @@ public class PlayGame {
         } while(!password.signs.matches("^[ A-Za-z]+$"));
     }
 
-    private static void enterLetter(GetPassword password) {
+    private void enterLetter(GetPassword password) {
         Scanner scan = new Scanner(System.in);
         System.out.println(password.signs);
         String letter = "test";
@@ -31,7 +34,11 @@ public class PlayGame {
         if (password.checkLetter(letter.charAt(0))) {
             System.out.println("Correct!");
         } else if (!password.checkLetter(letter.charAt(0))) {
-            System.out.println("Incorrect! Try again!");
+            numberOfIncorrectGuesses++;
+            if (numberOfIncorrectGuesses == 9) {
+                Paint.endGame(password.revealPassword(numberOfIncorrectGuesses));
+            }
+            Paint.paint(numberOfIncorrectGuesses);
         }
     }
 }

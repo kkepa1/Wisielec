@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class EnterNewPassword {
 
-    public static void enterNewPassword() {
+    public void enterNewPassword() {
         Scanner scan = new Scanner(System.in);
         String new_password = "";
         boolean new_password_check = false;
