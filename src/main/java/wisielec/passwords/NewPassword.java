@@ -23,7 +23,7 @@ public class NewPassword {
 
     private static void save(String password) throws IOException{
         File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
-        FileWriter fwriter = new FileWriter(file);
+        FileWriter fwriter = new FileWriter(file, true);
         BufferedWriter bwriter = new BufferedWriter(fwriter);
         bwriter.write(password + "\n");
         bwriter.close();
