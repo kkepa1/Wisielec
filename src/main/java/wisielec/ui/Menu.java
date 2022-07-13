@@ -14,20 +14,22 @@ public class Menu {
     protected void start() {
         this.response = question();
 
-        if (this.response == 1) {
+        while (this.response == 1) {
             enterNewPassword();
+            this.response = question();
         }
+
         if (this.response == 2) {
 
         }
     }
-
+    // metoda generujaca pytanie i zwracajaca odpowiedz
     private int question() {
         Scanner scan = new Scanner(System.in);
         int response = 0;
         boolean response_check = false;
 
-        System.out.println("What do you want to do?");
+        System.out.println("What do you want to do now?");
         System.out.println("1. Enter new password");
         System.out.println("2. Play game");
         System.out.print("Enter correct number: ");
@@ -67,6 +69,10 @@ public class Menu {
         }
 
         //Password password = new Password();
+    }
+
+    private static void playGame() {
+        
     }
 
 }
