@@ -1,5 +1,6 @@
 package wisielec.ui;
 
+import wisielec.passwords.GetPassword;
 import wisielec.passwords.NewPassword;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Menu {
         }
 
         if (this.response == 2) {
-
+            playGame();
         }
     }
     // metoda generujaca pytanie i zwracajaca odpowiedz
@@ -72,7 +73,8 @@ public class Menu {
     }
 
     private static void playGame() {
-        
+        GetPassword password = new GetPassword();
+        System.out.print(password.signs);
     }
 
 }

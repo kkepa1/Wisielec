@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 
 public class NewPassword {
@@ -17,7 +14,7 @@ public class NewPassword {
         try {
             save(this.password);
         } catch (IOException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 
