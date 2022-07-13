@@ -1,6 +1,6 @@
 package wisielec.ui;
 
-import wisielec.passwords.Password;
+import wisielec.passwords.NewPassword;
 
 import java.util.Scanner;
 
@@ -54,7 +54,7 @@ public class Menu {
 
     private static void enterNewPassword() {
         Scanner scan = new Scanner(System.in);
-        String new_password;
+        String new_password = "";
         boolean new_password_check = false;
 
         while (!new_password_check) {
@@ -68,7 +68,7 @@ public class Menu {
             }
         }
 
-        //Password password = new Password();
+        NewPassword password = new NewPassword(new_password);
     }
 
     private static void playGame() {
