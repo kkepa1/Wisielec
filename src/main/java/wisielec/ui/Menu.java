@@ -1,8 +1,11 @@
 package wisielec.ui;
 
+import wisielec.gamelogic.EnterNewPassword;
+import wisielec.gamelogic.PlayGame;
 import wisielec.passwords.GetPassword;
 import wisielec.passwords.NewPassword;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -12,16 +15,16 @@ public class Menu {
      * ale jak damy scannera do metody to jest git?
      */
 
-    protected void start() {
+    public void start() {
         this.response = question();
 
         while (this.response == 1) {
-            enterNewPassword();
+            EnterNewPassword.enterNewPassword();
             this.response = question();
         }
 
         if (this.response == 2) {
-            playGame();
+            PlayGame.playGame();
         }
     }
     // metoda generujaca pytanie i zwracajaca odpowiedz
@@ -38,7 +41,7 @@ public class Menu {
         while (!response_check) {
             try {
                 response = scan.nextInt();
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 String bad_input = scan.next();
                 System.err.print(bad_input + " is a wrong input! Enter 1 or 2: ");
                 continue;
@@ -51,54 +54,6 @@ public class Menu {
             }
         }
         return response;
-    }
-
-    private static void enterNewPassword() {
-        Scanner scan = new Scanner(System.in);
-        String new_password = "";
-        boolean new_password_check = false;
-
-        while (!new_password_check) {
-            System.out.print("Enter new password (should contain only letters and spaces): ");
-
-            new_password = scan.nextLine();
-            new_password_check = new_password.matches("^[ A-Za-z]+$");
-
-            if (!new_password_check) {
-                System.out.println("Wrong input!\n");
-            }
-        }
-
-        NewPassword password = new NewPassword(new_password);
-    }
-
-    private static void playGame() {
-        GetPassword password = new GetPassword();
-
-        do {
-            enterLetter(password);
-        } while(!password.signs.matches("^[ A-Za-z]+$"));
-    }
-
-    private static void enterLetter(GetPassword password) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println(password.signs);
-        String letter = "test";
-
-        System.out.print("Enter a letter: ");
-        while (!Character.isLetter(letter.charAt(0)) || letter.length() != 1) {
-            letter = scan.nextLine();
-
-            if (!Character.isLetter(letter.charAt(0)) || letter.length() != 1) {
-                System.out.print(letter + " is a wrong input! Enter a letter: ");
-            }
-        }
-
-        if (password.checkLetter(letter.charAt(0))) {
-            System.out.println("Correct!");
-        } else if (!password.checkLetter(letter.charAt(0))) {
-            System.out.println("Incorrect! Try again!");
-        }
     }
 
 }
