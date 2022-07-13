@@ -1,8 +1,9 @@
 package wisielec.ui;
 
 public class Paint {
+    // metoda rysujaca wisielca
     public static void paint(int numberOfIncorrectGuesses) {
-        System.out.println("Incorrect! Try again!");
+        System.out.println("\nIncorrect! Try again!");
 
         switch (numberOfIncorrectGuesses) {
             case 1 -> System.out.println("""

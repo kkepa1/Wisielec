@@ -11,12 +11,14 @@ public class GetPassword {
     public String signs;
     private String[] passwords;
 
+    // wywolanie 3 metod ktore wybieraja losowe haslo z bazy i tworza puste pola _ na podstawie hasla
     public GetPassword() {
         this.passwords = getPasswords().split(System.lineSeparator());
         this.random_password = getRandom();
         this.signs = getSigns();
     }
 
+    // metoda bierze z bazy wszystkie hasla
     private String getPasswords() {
         StringBuilder content = new StringBuilder();
 
@@ -31,18 +33,21 @@ public class GetPassword {
                 content.append(System.lineSeparator());
             }
         } catch (IOException e) {
+            System.err.println("Database file doesn't exist!");
             e.printStackTrace();
         }
 
         return content.toString();
     }
 
+    // metoda losuje jedno haslo z pobranych z bazy hasel
     private String getRandom() {
         this.passwords = getPasswords().split(System.lineSeparator());
         int idx = new Random().nextInt(this.passwords.length);
         return this.passwords[idx];
     }
 
+    // metoda tworzy puste pola _ na podstawie wylosowanego hasla
     private String getSigns() {
         StringBuilder content = new StringBuilder();
         for (int i=0; i<this.random_password.length(); i++) {
@@ -57,9 +62,14 @@ public class GetPassword {
         return content.toString();
     }
 
+    // sprawdzenie czy podana litera znajduje sie w hasle
     public boolean checkLetter(char letter) {
-        letter = Character.toUpperCase(letter);
-        if (this.random_password.indexOf(letter) != -1) {
+        return this.random_password.indexOf(letter) != -1;
+    }
+
+    // jezeli litera znajduje sie w hasle to zmiana pustych pol - odkrycie danej litery (lub liter)
+    public void moveLetter(char letter) {
+        if (checkLetter(letter)) {
             char[] temp = this.signs.toCharArray();
 
             for (int i=0; i<this.random_password.length(); i++) {
@@ -69,14 +79,10 @@ public class GetPassword {
             }
             this.signs = String.valueOf(temp);
         }
-        return this.random_password.indexOf(letter) != -1;
     }
 
-    public String revealPassword(int check) {
-        if (check == 9) {
-            return this.random_password;
-        } else {
-            return "?";
-        }
+    // zwracanie hasla
+    public String revealPassword() {
+        return this.random_password;
     }
 }

@@ -14,8 +14,17 @@ public class NewPassword {
         }
     }
 
+    // napisuje plik (jeżeli go nie ma to tworzy nowy plik). W każdej linijce znajduje sie jedno haslo
     private static void save(String password) throws IOException{
         File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
+        if(!file.exists()) {
+            try {
+                System.out.println("Creating new file.");
+                file.createNewFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         FileWriter fwriter = new FileWriter(file, true);
         BufferedWriter bwriter = new BufferedWriter(fwriter);
         bwriter.write(password.toUpperCase() + "\n");

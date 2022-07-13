@@ -44,7 +44,7 @@ public class Menu {
                 response = scan.nextInt();
             } catch (InputMismatchException e) {
                 String bad_input = scan.next();
-                System.err.print(bad_input + " is a wrong input! Enter 1 or 2: ");
+                System.out.print(bad_input + " is a wrong input! Enter 1 or 2: ");
                 continue;
             }
 
