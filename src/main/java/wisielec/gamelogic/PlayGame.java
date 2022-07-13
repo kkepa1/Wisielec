@@ -15,6 +15,11 @@ public class PlayGame {
         do {
             enterLetter(password);
         } while(!password.signs.matches("^[ A-Za-z]+$"));
+
+        System.out.println("\nCongratulations, you won!");
+        System.out.println("You guessed the secret word: " + "\"" + password.signs + "\"");
+        System.out.println("The stick man is alive!");
+        System.exit(0);
     }
 
     private void enterLetter(GetPassword password) {

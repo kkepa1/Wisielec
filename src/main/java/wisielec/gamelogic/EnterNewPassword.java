@@ -15,7 +15,7 @@ public class EnterNewPassword {
             System.out.print("Enter new password (should contain only letters and spaces): ");
 
             new_password = scan.nextLine();
-            new_password_check = new_password.matches("^[ A-Za-z]+$");
+            new_password_check = new_password.matches("[\\p{IsAlphabetic}\\d]");
 
             if (!new_password_check) {
                 System.out.println("Wrong input!\n");

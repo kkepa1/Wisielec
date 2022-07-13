@@ -58,6 +58,7 @@ public class GetPassword {
     }
 
     public boolean checkLetter(char letter) {
+        letter = Character.toUpperCase(letter);
         if (this.random_password.indexOf(letter) != -1) {
             char[] temp = this.signs.toCharArray();
 

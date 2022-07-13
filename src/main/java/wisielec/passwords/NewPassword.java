@@ -18,7 +18,7 @@ public class NewPassword {
         File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
         FileWriter fwriter = new FileWriter(file, true);
         BufferedWriter bwriter = new BufferedWriter(fwriter);
-        bwriter.write(password + "\n");
+        bwriter.write(password.toUpperCase() + "\n");
         bwriter.close();
         System.out.println("Password added to database");
     }

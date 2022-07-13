@@ -1,113 +1,89 @@
 package wisielec.ui;
 
-import wisielec.passwords.GetPassword;
-
 public class Paint {
     public static void paint(int numberOfIncorrectGuesses) {
+        System.out.println("Incorrect! Try again!");
+
         switch (numberOfIncorrectGuesses) {
-            case 1:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        |
-                        |
-                        |
-                        |
-                        |
-                        |_______________________
-                       
-                        """);
-                break;
-            case 2:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |
-                        |
-                        |
-                        |
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 3:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |
-                        |
-                        |
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 4:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |                   0
-                        |
-                        |
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 5:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |                   0
-                        |                   |
-                        |
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 6:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |                   0
-                        |                ---|---
-                        |
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 7:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |                   0
-                        |                ---|---
-                        |                   ^
-                        |
-                        |_______________________
-                        
-                        """);
-                break;
-            case 8:
-                System.out.println("Incorrect! Try again!");
-                System.out.println("""
-                        _____________________
-                        |                   |
-                        |                   0
-                        |                ---|---
-                        |                   ^
-                        |                  /
-                        |_______________________
-                        
-                        """);
-                break;
+            case 1 -> System.out.println("""
+                    |
+                    |
+                    |
+                    |
+                    |
+                    |_______________________
+                                           
+                    """);
+            case 2 -> System.out.println("""
+                    _____________________
+                    |
+                    |
+                    |
+                    |
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 3 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |
+                    |
+                    |
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 4 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |                   0
+                    |
+                    |
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 5 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |                   0
+                    |                   |
+                    |
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 6 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |                   0
+                    |                ---|---
+                    |
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 7 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |                   0
+                    |                ---|---
+                    |                   ^
+                    |
+                    |_______________________
+                                            
+                    """);
+            case 8 -> System.out.println("""
+                    _____________________
+                    |                   |
+                    |                   0
+                    |                ---|---
+                    |                   ^
+                    |                  /
+                    |_______________________
+                                            
+                    """);
         }
     }
 
