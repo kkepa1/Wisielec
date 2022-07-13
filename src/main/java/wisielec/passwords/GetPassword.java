@@ -10,6 +10,7 @@ public class GetPassword {
     private String random_password;
     public String signs;
     private String[] passwords;
+    private char[] check_letters = {};
 
     public GetPassword() {
         this.passwords = getPasswords().split(System.lineSeparator());
@@ -45,6 +46,7 @@ public class GetPassword {
 
     private String getSigns() {
         StringBuilder content = new StringBuilder();
+        boolean con;
         for (int i=0; i<this.random_password.length(); i++) {
             if (Character.isLetter(this.random_password.charAt(i))) {
                 content.append("_");
@@ -53,11 +55,27 @@ public class GetPassword {
             if (Character.isWhitespace(this.random_password.charAt(i))) {
                 content.append(" ");
             }
+
+            for (int j=0; j<this.check_letters.length; j++) {
+                if(this.check_letters[j] == this.random_password.charAt(i)) {
+
+                }
+            }
         }
         return content.toString();
     }
 
-    //public boolean checkLetter(String letter) {
+    public boolean checkLetter(char letter) {
+        if (this.random_password.indexOf(letter) != -1) {
+            char[] temp = this.signs.toCharArray();
 
-    //}
+            for (int i=0; i<this.random_password.length(); i++) {
+                if (this.random_password.charAt(i) == letter) {
+                    temp[i] = letter;
+                }
+            }
+            this.signs = String.valueOf(temp);
+        }
+        return this.random_password.indexOf(letter) != -1;
+    }
 }

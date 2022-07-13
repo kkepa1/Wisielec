@@ -87,7 +87,14 @@ public class Menu {
                 System.out.print(letter + " is a wrong input! Enter a letter: ");
             }
         }
-        System.out.println(letter);
+
+        if (password.checkLetter(letter.charAt(0))) {
+            System.out.println("Correct!");
+            System.out.println(password.signs);
+        } else if (!password.checkLetter(letter.charAt(0))) {
+            System.out.println("Incorrect! Try again!");
+            System.out.println(password.signs);
+        }
     }
 
 }
