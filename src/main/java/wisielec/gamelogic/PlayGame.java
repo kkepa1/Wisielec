@@ -1,6 +1,6 @@
 package wisielec.gamelogic;
 
-import wisielec.passwords.GetPassword;
+import wisielec.passwords.PasswordService;
 import wisielec.ui.Paint;
 
 import java.util.Scanner;
@@ -11,8 +11,8 @@ public class PlayGame {
 
     // wybranie losowego hasla z bazy i iteracje zgadywania (liter lub calego hasla)
     // wygrana - wszystkie puste pola odkryte
-    public void playGame() {
-        GetPassword password = new GetPassword();
+    protected void playGame() {
+        PasswordService password = new PasswordService();
 
         do {
             enterLetter(password);
@@ -22,7 +22,7 @@ public class PlayGame {
 
     // metoda zgadywania litery lub calego hasla
     // przegrana - numberOfIncorrectGuesses == 9
-    private void enterLetter(GetPassword password) {
+    protected void enterLetter(PasswordService password) {
         Scanner scan = new Scanner(System.in);
         System.out.println(password.signs);
         String letter;
@@ -62,7 +62,7 @@ public class PlayGame {
     }
 
     // gdy uzytkownik wygra, metoda jest uruchamiana i konczy program
-    private static void win(GetPassword password){
+    protected static void win(PasswordService password){
         System.out.println("\nCongratulations, you won!");
         System.out.println("You guessed the secret word: " + "\"" + password.revealPassword() + "\"");
         System.out.println("The stick man is alive!");

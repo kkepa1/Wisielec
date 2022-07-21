@@ -1,6 +1,6 @@
 package wisielec;
 
-import wisielec.ui.Menu;
+import wisielec.gamelogic.Menu;
 
 public class Runner {
     public static void main(String[] args) {

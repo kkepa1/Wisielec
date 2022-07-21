@@ -1,44 +1,24 @@
 package wisielec.passwords;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
-public class GetPassword {
+public class PasswordService {
     private final String random_password;
     public String signs;
     private String[] passwords;
+    private FileHandler file_handler = new FileHandler();
 
     // wywolanie 3 metod ktore wybieraja losowe haslo z bazy i tworza puste pola _ na podstawie hasla
-    public GetPassword() {
+    public PasswordService() {
         this.passwords = getPasswords().split(System.lineSeparator());
         this.random_password = getRandom();
         this.signs = getSigns();
     }
 
     // metoda bierze z bazy wszystkie hasla
-    private String getPasswords() {
-        StringBuilder content = new StringBuilder();
-
-        try {
-            File file = new File("src/main/java/wisielec/passwords/PasswordBase.txt");
-            FileReader freader = new FileReader(file);
-            BufferedReader breader = new BufferedReader(freader);
-            String line;
-
-            while ((line = breader.readLine()) != null) {
-                content.append(line);
-                content.append(System.lineSeparator());
-            }
-        } catch (IOException e) {
-            System.err.println("Database file doesn't exist!");
-            e.printStackTrace();
-        }
-
-        return content.toString();
-    }
+    private String getPasswords() { return file_handler.getPasswordsFromFile(); }
 
     // metoda losuje jedno haslo z pobranych z bazy hasel
     private String getRandom() {
@@ -84,5 +64,30 @@ public class GetPassword {
     // zwracanie hasla
     public String revealPassword() {
         return this.random_password;
+    }
+
+    public void enterNewPassword() {
+        Scanner scan = new Scanner(System.in);
+        String new_password = "";
+        boolean new_password_check = false;
+
+        // input nowego hasla, ktory sklada sie tylko z liter i spacji
+        while (!new_password_check) {
+            System.out.print("Enter new password (should contain only letters and spaces): ");
+
+            new_password = scan.nextLine();
+            new_password_check = new_password.matches("^[ A-Za-z]+$");
+
+            if (!new_password_check) {
+                System.out.println("Wrong input!\n");
+            }
+        }
+
+        // przekazanie hasla do klasy NewPassword
+        try {
+            file_handler.save(new_password);
+        } catch (IOException e) {
+            System.out.println("Something went wrong!");
+        }
     }
 }
