@@ -8,7 +8,7 @@ public class PasswordService {
     private final String random_password;
     public String signs;
     private String[] passwords;
-    private FileHandler file_handler = new FileHandler();
+    private PasswordsDaoDbImpl file_handler = new PasswordsDaoDbImpl();
 
     // wywolanie 3 metod ktore wybieraja losowe haslo z bazy i tworza puste pola _ na podstawie hasla
     public PasswordService() {
@@ -18,7 +18,7 @@ public class PasswordService {
     }
 
     // metoda bierze z bazy wszystkie hasla
-    private String getPasswords() { return file_handler.getPasswordsFromFile(); }
+    private String getPasswords() { return file_handler.getPasswordsFromDb(); }
 
     // metoda losuje jedno haslo z pobranych z bazy hasel
     private String getRandom() {
@@ -85,8 +85,8 @@ public class PasswordService {
 
         // przekazanie hasla do klasy NewPassword
         try {
-            file_handler.save(new_password);
-        } catch (IOException e) {
+            file_handler.saveNewPassword(new_password.toUpperCase());
+        } catch (Exception e) {
             System.out.println("Something went wrong!");
         }
     }
